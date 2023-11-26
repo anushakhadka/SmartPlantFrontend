@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {DetectingService} from "../detecting.service";
 
 @Component({
   selector: 'app-dashboard',
