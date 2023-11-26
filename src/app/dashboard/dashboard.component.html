@@ -1,0 +1,20 @@
+<img src="assets/logo.png" height="300" width="300">
+
+<div class="container">
+  <div>
+    <label for="image" class="form-label"><b>Upload Image</b></label>
+    <input class="form-control form-control-lg" id ='image' type="file" (change)="onFileSelected($event)">
+  </div>
+  <hr>
+  <div *ngIf="selectedFile" >
+    <img  [src]="imagePreview" alt="Selected Image" style="max-width: 300px; max-height: 300px; display: block; margin: 0 auto; ">
+    <h4>{{nameOfPlant}}</h4>
+    <button (click)="getDataOfPlant(nameOfPlant)" class="btn btn-primary">Know more</button>
+
+    <div class="visible-box">
+      <p><b>{{this.descriptionOfPlant | translate }}</b></p>
+      <button class="btn btn-primary" (click)="switchLanguage('hi')">Click</button>
+    </div>
+  </div>
+
+</div>
