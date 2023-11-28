@@ -1,20 +1,48 @@
-<img src="assets/logo.png" height="300" width="300">
-
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="ball-8bits"><p style="color: red; font-size: large"><b>Loading...</b></p></ngx-spinner>
+<img src="assets/logo.png" height="300" width="300" alt="logo">
 <div class="container">
   <div>
-    <label for="image" class="form-label"><b>Upload Image</b></label>
-    <input class="form-control form-control-lg" id ='image' type="file" (change)="onFileSelected($event)">
+    <label  for="image" class="custom-label"><b>Upload Image</b></label>
+    <input class="form-control form-control-lg" id='image' type="file" (change)="onFileSelected($event)">
   </div>
   <hr>
-  <div *ngIf="selectedFile" >
-    <img  [src]="imagePreview" alt="Selected Image" style="max-width: 300px; max-height: 300px; display: block; margin: 0 auto; ">
-    <h4>{{nameOfPlant}}</h4>
-    <button (click)="getDataOfPlant(nameOfPlant)" class="btn btn-primary">Know more</button>
+  <div *ngIf="selectedFile">
+    <img class="image-frame" [src]="imagePreview" alt="Selected Image"
+         style="max-width: 300px; max-height: 300px; display: block; margin: 0 auto; ">
+    <h3>{{nameOfPlant}}</h3>
+    <button *ngIf="nameOfPlant" (click)="getDataOfPlant(nameOfPlant)" class="reactive-button"><i
+      class="bi bi-info-circle"></i> Click for more details
+    </button>
 
-    <div class="visible-box">
-      <p><b>{{this.descriptionOfPlant | translate }}</b></p>
-      <button class="btn btn-primary" (click)="switchLanguage('hi')">Click</button>
+    <div class="row mt-2" *ngIf="descriptionOfPlant">
+      <div class="col-md-4">
+        <label class="custom-label" for="language">Select Your Language</label>
+        <select class="form-control mt-2" id="language" [(ngModel)]="selectedLanguage">
+          <option *ngFor="let language of languages" [value]="language.value">{{ language.name }}</option>
+        </select>
+      </div>
     </div>
+
+    <div *ngIf="descriptionOfPlant" class="visible-box">
+      <p><b>{{this.descriptionOfPlant }}</b></p>
+      <p style="color: red"><b>{{this.translatedText }}</b></p>
+      <button *ngIf="descriptionOfPlant" (click)="translateTheFile(this.descriptionOfPlant, selectedLanguage)"
+              class="reactive-button">Translate to your preferred language
+      </button>
+      <hr>
+      <div *ngIf="translatedText">
+        <button (click)="readTheText(this.translatedText, selectedLanguage)" class="reactive-button"><i
+          class="bi bi-music-note-beamed"></i> Click to read the translated text
+        </button>
+      </div>
+    </div>
+
+
   </div>
 
 </div>
+
+<button (click)="click()">Buttons
+
+
+ </button>

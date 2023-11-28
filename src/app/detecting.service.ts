@@ -16,11 +16,19 @@ export class DetectingService {
   }
 
   getData(): any {
-    return this.http.get('http://127.0.0.1:8000/api/welcome')
+    return this.http.get('http://127.0.0.1:8000/api/welcome/')
   }
 
   generateData(data: any): Observable<any> {
     const headers = { 'Content-Type': 'application/json' };
     return this.http.post('http://127.0.0.1:8000/chat/api/get-data/', {data}, {headers})
+  }
+  translate(data: any, language: any): Observable<any> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.post('http://127.0.0.1:8000/translate/api/translate-data/', [{language}, {data}], {headers})
+  }
+  readText(data: any, language: any): Observable<any> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.post('http://127.0.0.1:8000/readText/api/read-text/', [{language}, {data}], {headers})
   }
 }
