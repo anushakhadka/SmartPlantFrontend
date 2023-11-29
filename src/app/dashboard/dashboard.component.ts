@@ -5,6 +5,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {NgxSpinnerModule, NgxSpinnerService} from "ngx-spinner";
 
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -18,7 +19,6 @@ export class DashboardComponent {
   }
 
   languages = [
-    {name: 'Mandarin Chinese', value: 'zh'},
     {name: 'Spanish', value: 'es'},
     {name: 'English', value: 'en'},
     {name: 'Hindi', value: 'hi'},
@@ -50,33 +50,31 @@ export class DashboardComponent {
         this.imagePreview = e.target.result;
       };
       reader.readAsDataURL(this.selectedFile);
+      this.spinner.show()
       this.fileUploadService.uploadImage(this.selectedFile).subscribe(
         (response) => {
-          console.log(response)
+         this.spinner.hide()
           this.nameOfPlant = response.image_url;
-          console.log(this.nameOfPlant)
+
         },
         (error) => {
+          this.spinner.hide()
           console.error('Error uploading image:', error);
         }
       );
 
-      console.log(this.selectedFile)
+
     } else {
       this.selectedFile = null;
       this.imagePreview = null;
     }
   }
 
-  getWelcome() {
-    this.fileUploadService.getData().subscribe(response => {
-      console.log(response)
-    })
-  }
 
   getDataOfPlant(data: any) {
+    this.spinner.show()
     this.fileUploadService.generateData(data).subscribe(response => {
-      console.log(response)
+      this.spinner.hide()
       this.descriptionOfPlant = response.response
     })
   }
@@ -96,10 +94,5 @@ export class DashboardComponent {
     })
   }
 
-click() {
-  this.fileUploadService.getData().subscribe(response => {
-    console.log(response)
-  })
 
-}
 }
