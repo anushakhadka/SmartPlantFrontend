@@ -20,7 +20,15 @@ export class DashboardComponent {
 
   languages = [
 
+    {name: 'Spanish', value: 'es'},
     {name: 'English', value: 'en'},
+    {name: 'Hindi', value: 'hi'},
+    {name: 'Arabic', value: 'ar'},
+    {name: 'Bengali', value: 'bn'},
+    {name: 'Portuguese', value: 'pt'},
+    {name: 'Russian', value: 'ru'},
+    {name: 'Urdu', value: 'ur'},
+    {name: 'Indonesian / Malay', value: 'id'},
 
   ];
 
