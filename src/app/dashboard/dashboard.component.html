@@ -14,14 +14,14 @@
       class="bi bi-info-circle"></i> Click for more details
     </button>
 
-    <div class="row mt-2" *ngIf="descriptionOfPlant">
-      <div class="col-md-4">
-        <label class="custom-label" for="language">Select Your Language</label>
-        <select class="form-control mt-2" id="language" [(ngModel)]="selectedLanguage">
-          <option *ngFor="let language of languages" [value]="language.value">{{ language.name }}</option>
-        </select>
-      </div>
-    </div>
+<!--    <div class="row mt-2" *ngIf="descriptionOfPlant">-->
+<!--      <div class="col-md-4">-->
+<!--        <label class="custom-label" for="language">Select Your Language</label>-->
+<!--        <select class="form-control mt-2" id="language" [(ngModel)]="selectedLanguage">-->
+<!--          <option *ngFor="let language of languages" [value]="language.value">{{ language.name }}</option>-->
+<!--        </select>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <div *ngIf="descriptionOfPlant" class="visible-box">
       <p><b>{{this.descriptionOfPlant }}</b></p>
