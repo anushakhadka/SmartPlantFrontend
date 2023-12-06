@@ -21,7 +21,14 @@ export class DashboardComponent {
   languages = [
 
     {name: 'English', value: 'en'},
-
+    {name: 'Spanish', value: 'es'},
+    {name: 'Hindi', value: 'hi'},
+    {name: 'Arabic', value: 'ar'},
+    {name: 'Bengali', value: 'bn'},
+    {name: 'Portuguese', value: 'pt'},
+    {name: 'Russian', value: 'ru'},
+    {name: 'Urdu', value: 'ur'},
+    {name: 'Indonesian / Malay', value: 'id'},
   ];
 
   selectedFile: File | null = null;
